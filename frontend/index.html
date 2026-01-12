@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Kriptografi - Teknik Informatika</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Menginisialisasi Sistem Kriptografi...</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-lock"></i>
+          <h1>Web Kriptografi<span class="highlight">TI</span></h1>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#home" class="active">Beranda</a></li>
+            <li><a href="#methods">Metode</a></li>
+            <li><a href="#signature">Tanda Tangan Digital</a></li>
+            <li><a href="#tools">Alat</a></li>
+            <li><a href="#about">Tentang</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h2 class="hero-title">
+            Simulasi Kriptografi
+            <span class="highlight">Teknik Informatika</span>
+          </h2>
+          <p class="hero-subtitle">
+            Implementasi berbagai algoritma kriptografi dengan antarmuka modern
+            dan intuitif
+          </p>
+          <div class="hero-buttons">
+            <a href="#signature" class="btn btn-primary">
+              <i class="fas fa-signature"></i> Tanda Tangan Digital
+            </a>
+            <a href="#methods" class="btn btn-secondary">
+              <i class="fas fa-code"></i> Metode Lainnya
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="crypto-animation">
+            <div class="encryption-visual">
+              <div class="plain-text">Plain Text</div>
+              <div class="arrow">
+                <i class="fas fa-long-arrow-alt-right"></i>
+              </div>
+              <div class="cipher-text">Cipher Text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container main-container">
+      <!-- Methods Section -->
+      <section id="methods" class="section methods-section">
+        <h2 class="section-title">Metode Kriptografi</h2>
+        <p class="section-subtitle">
+          Pilih salah satu metode di bawah ini untuk simulasi
+        </p>
+
+        <div class="methods-grid">
+          <div class="method-card" data-method="caesar">
+            <div class="method-icon"><i class="fas fa-exchange-alt"></i></div>
+            <h3>Caesar Cipher</h3>
+            <p>Substitusi sederhana dengan pergeseran karakter</p>
+            <button class="btn-card" onclick="openMethodModal('caesar')">
+              Coba Sekarang
+            </button>
+          </div>
+
+          <div class="method-card" data-method="vigenere">
+            <div class="method-icon"><i class="fas fa-key"></i></div>
+            <h3>Vigenère Cipher</h3>
+            <p>Substitusi polialfabetik dengan kunci berulang</p>
+            <button class="btn-card" onclick="openMethodModal('vigenere')">
+              Coba Sekarang
+            </button>
+          </div>
+
+          <div class="method-card" data-method="playfair">
+            <div class="method-icon"><i class="fas fa-th"></i></div>
+            <h3>Playfair Cipher</h3>
+            <p>Substitusi bigram menggunakan matriks 5x5</p>
+            <button class="btn-card" onclick="openMethodModal('playfair')">
+              Coba Sekarang
+            </button>
+          </div>
+
+          <div class="method-card" data-method="affine">
+            <div class="method-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>Affine Cipher</h3>
+            <p>Kombinasi perkalian dan penjumlahan modulo</p>
+            <button class="btn-card" onclick="openMethodModal('affine')">
+              Coba Sekarang
+            </button>
+          </div>
+
+          <div class="method-card" data-method="hill">
+            <div class="method-icon"><i class="fas fa-mountain"></i></div>
+            <h3>Hill Cipher</h3>
+            <p>Enkripsi blok dengan aljabar linear</p>
+            <button class="btn-card" onclick="openMethodModal('hill')">
+              Coba Sekarang
+            </button>
+          </div>
+
+          <div class="method-card" data-method="rsa">
+            <div class="method-icon"><i class="fas fa-user-secret"></i></div>
+            <h3>RSA Algorithm</h3>
+            <p>Kriptografi asimetris dengan kunci publik/privat</p>
+            <button class="btn-card" onclick="openMethodModal('rsa')">
+              Coba Sekarang
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Digital Signature Section -->
+      <section id="signature" class="section signature-section">
+        <h2 class="section-title">Tanda Tangan Digital</h2>
+        <p class="section-subtitle">
+          Implementasi RSA + SHA-256 untuk integritas dan autentikasi dokumen
+        </p>
+
+        <div class="signature-container">
+          <!-- Card 1: Create Signature -->
+          <div class="signature-card">
+            <h3>
+              <i class="fas fa-file-signature"></i> Pembuatan Tanda Tangan
+            </h3>
+
+            <div class="form-group">
+              <label for="privateKey">Kunci Privat RSA</label>
+              <textarea
+                id="privateKey"
+                rows="3"
+                placeholder="Masukkan kunci privat atau biarkan kosong untuk generate otomatis"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="documentInput">Dokumen Teks</label>
+              <textarea
+                id="documentInput"
+                rows="5"
+                placeholder="Masukkan teks dokumen di sini..."
+              ></textarea>
+            </div>
+
+            <div class="form-group file-upload">
+              <label for="fileUpload"
+                ><i class="fas fa-cloud-upload-alt"></i> Unggah File PDF</label
+              >
+              <input type="file" id="fileUpload" accept=".pdf,.txt" />
+              <div class="file-info" id="fileInfo">Belum ada file dipilih</div>
+            </div>
+
+            <div class="button-group">
+              <button class="btn btn-primary" onclick="generateKeyPair()">
+                <i class="fas fa-key"></i> Generate Key Pair
+              </button>
+              <button
+                class="btn btn-success"
+                onclick="createDigitalSignature()"
+              >
+                <i class="fas fa-signature"></i> Buat Tanda Tangan
+              </button>
+              <button class="btn btn-secondary" onclick="downloadSignature()">
+                <i class="fas fa-download"></i> Download Signature
+              </button>
+              <button class="btn btn-info" onclick="downloadKeys()">
+                <i class="fas fa-key"></i> Download Keys
+              </button>
+              <button class="btn btn-warning" onclick="clearSignatureForm()">
+                <i class="fas fa-broom"></i> Bersihkan
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Verify Signature -->
+          <div class="signature-card">
+            <h3><i class="fas fa-check-circle"></i> Verifikasi Tanda Tangan</h3>
+
+            <div class="form-group">
+              <label for="publicKey">Kunci Publik RSA</label>
+              <textarea
+                id="publicKey"
+                rows="3"
+                placeholder="Masukkan kunci publik"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="signatureInput">Tanda Tangan Digital</label>
+              <textarea
+                id="signatureInput"
+                rows="4"
+                placeholder="Masukkan tanda tangan digital"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="originalDocument">Dokumen Asli</label>
+              <textarea
+                id="originalDocument"
+                rows="5"
+                placeholder="Masukkan dokumen asli untuk verifikasi"
+              ></textarea>
+            </div>
+
+            <div class="button-group">
+              <button
+                class="btn btn-warning"
+                onclick="verifyDigitalSignature()"
+              >
+                <i class="fas fa-shield-alt"></i> Verifikasi Tanda Tangan
+              </button>
+              <button class="btn btn-secondary" onclick="loadExample()">
+                <i class="fas fa-book"></i> Contoh
+              </button>
+              <button class="btn btn-success" onclick="downloadVerification()">
+                <i class="fas fa-download"></i> Download Hasil
+              </button>
+            </div>
+
+            <div class="verification-result" id="verificationResult">
+              <h4>Hasil Verifikasi:</h4>
+              <div class="result-placeholder">
+                <p>Hasil verifikasi akan muncul di sini</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="signature-explanation">
+          <!-- Tambahkan setelah signature-explanation -->
+          <div class="rsa-info">
+            <h3><i class="fas fa-shield-alt"></i> Informasi RSA</h3>
+            <div class="info-grid">
+              <div class="info-card">
+                <h4><i class="fas fa-key"></i> Kunci Privat</h4>
+                <p>Digunakan untuk MEMBUAT tanda tangan. RAHASIA!</p>
+              </div>
+              <div class="info-card">
+                <h4><i class="fas fa-key"></i> Kunci Publik</h4>
+                <p>Digunakan untuk VERIFIKASI. Boleh dibagikan.</p>
+              </div>
+              <div class="info-card">
+                <h4><i class="fas fa-exclamation-triangle"></i> Peringatan</h4>
+                <p>Tanpa kunci publik, verifikasi TIDAK AKURAT!</p>
+              </div>
+            </div>
+          </div>
+          <h3><i class="fas fa-info-circle"></i> Penjelasan Proses</h3>
+          <div class="explanation-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Hashing dengan SHA-256</h4>
+                <p>
+                  Dokumen diubah menjadi hash unik 256-bit menggunakan algoritma
+                  SHA-256
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Enkripsi Hash dengan RSA</h4>
+                <p>
+                  Hash dienkripsi menggunakan kunci privat pengirim untuk
+                  membuat tanda tangan
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Verifikasi dengan Kunci Publik</h4>
+                <p>
+                  Penerima mendekripsi tanda tangan dengan kunci publik dan
+                  membandingkan hash
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools Section -->
+      <section id="tools" class="section tools-section">
+        <h2 class="section-title">Alat Kriptografi Lainnya</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3><i class="fas fa-hashtag"></i> Hash Generator</h3>
+            <div class="tool-form">
+              <textarea
+                id="hashInput"
+                placeholder="Masukkan teks untuk di-hash..."
+              ></textarea>
+              <select id="hashAlgorithm">
+                <option value="sha256">SHA-256</option>
+                <option value="sha1">SHA-1</option>
+                <option value="md5">MD5</option>
+              </select>
+              <div class="tool-buttons">
+                <button class="btn-tool" onclick="generateHash()">
+                  Generate Hash
+                </button>
+                <button class="btn-tool" onclick="downloadHash()">
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+              <div class="tool-result" id="hashResult"></div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3><i class="fas fa-exchange-alt"></i> Base64 Converter</h3>
+            <div class="tool-form">
+              <textarea
+                id="base64Input"
+                placeholder="Masukkan teks untuk encode/decode..."
+              ></textarea>
+              <div class="tool-buttons">
+                <button class="btn-tool" onclick="encodeBase64()">
+                  Encode
+                </button>
+                <button class="btn-tool" onclick="decodeBase64()">
+                  Decode
+                </button>
+                <button class="btn-tool" onclick="downloadBase64()">
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </div>
+              <div class="tool-result" id="base64Result"></div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3><i class="fas fa-random"></i> Random Key Generator</h3>
+            <div class="tool-form">
+              <div class="form-row">
+                <label>Panjang Kunci:</label>
+                <input
+                  type="number"
+                  id="keyLength"
+                  min="8"
+                  max="256"
+                  value="32"
+                />
+              </div>
+              <div class="form-row">
+                <label>Jenis Kunci:</label>
+                <select id="keyType">
+                  <option value="hex">Hexadecimal</option>
+                  <option value="base64">Base64</option>
+                  <option value="alphanumeric">Alfanumerik</option>
+                </select>
+              </div>
+              <div class="tool-buttons">
+                <button class="btn-tool" onclick="generateRandomKey()">
+                  Generate Key
+                </button>
+                <button class="btn-tool" onclick="downloadRandomKey()">
+                  <i class="fas fa-download"></i> Download Key
+                </button>
+              </div>
+              <div class="tool-result" id="keyResult"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section about-section">
+        <h2 class="section-title">Tentang Aplikasi</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Web Kriptografi Teknik Informatika</h3>
+            <p>
+              Aplikasi ini merupakan simulasi implementasi berbagai algoritma
+              kriptografi yang dibuat untuk memenuhi tugas UAS Kriptografi
+              dengan fokus pada Tanda Tangan Digital menggunakan RSA dan
+              SHA-256.
+            </p>
+            <div class="features">
+              <h4><i class="fas fa-star"></i> Fitur Utama:</h4>
+              <ul>
+                <li>Implementasi 6+ algoritma kriptografi klasik dan modern</li>
+                <li>Pembuatan dan verifikasi tanda tangan digital</li>
+                <li>Antarmuka responsif dengan tema sky yang modern</li>
+                <li>Simulasi interaktif dengan visualisasi proses</li>
+                <li>Toolkit kriptografi lengkap (hash, Base64, dll)</li>
+                <li>Fitur download lengkap untuk semua hasil</li>
+              </ul>
+            </div>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number" id="algorithmCount">6+</div>
+              <div class="stat-label">Algoritma</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="signatureCount">0</div>
+              <div class="stat-label">Tanda Tangan Dibuat</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" id="encryptionCount">0</div>
+              <div class="stat-label">Enkripsi Dilakukan</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <i class="fas fa-lock"></i>
+            <h3>Web Kriptografi TI</h3>
+            <p>Simulasi lengkap untuk pembelajaran kriptografi</p>
+          </div>
+          <div class="footer-links">
+            <h4>Navigasi Cepat</h4>
+            <ul>
+              <li><a href="#home">Beranda</a></li>
+              <li><a href="#methods">Metode</a></li>
+              <li><a href="#signature">Tanda Tangan</a></li>
+              <li><a href="#tools">Alat</a></li>
+            </ul>
+          </div>
+          <div class="footer-info">
+            <h4>Informasi</h4>
+            <p><i class="fas fa-user-graduate"></i> Tugas UAS Kriptografi</p>
+            <p><i class="fas fa-university"></i> Teknik Informatika</p>
+            <p>
+              <i class="fas fa-code"></i> Dibangun dengan HTML, CSS, JavaScript
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Web Kriptografi by Asep Jelpa Nasution. Semua hak
+            dilindungi.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-codepen"></i></a>
+            <a href="#"><i class="fas fa-code"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal for Cryptography Methods -->
+    <div id="methodModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">Caesar Cipher</h3>
+          <button class="modal-close" onclick="closeMethodModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="methodContent">
+            <!-- Dynamic content will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/crypto.js"></script>
+    <script src="js/ui.js"></script>
+
+    <script>
+      // =============================================
+      // FUNGSI DOWNLOAD SEDERHANA YANG LANGSUNG KERJA
+      // =============================================
+
+      // Fungsi utility untuk download file
+      function downloadTextAsFile(text, filename) {
+        try {
+          // Buat blob dari text
+          const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+
+          // Buat elemen <a> untuk download
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          a.style.display = "none";
+
+          // Tambahkan ke body dan trigger click
+          document.body.appendChild(a);
+          a.click();
+
+          // Cleanup
+          setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }, 100);
+
+          console.log(`File berhasil diunduh: ${filename}`);
+          return true;
+        } catch (error) {
+          console.error("Error download file:", error);
+          alert("Gagal mengunduh file. Coba lagi.");
+          return false;
+        }
+      }
+
+      // =============================================
+      // FUNGSI DOWNLOAD UNTUK TANDA TANGAN DIGITAL
+      // =============================================
+
+      // 1. Download Digital Signature
+      function downloadSignature() {
+        const signature = document.getElementById("signatureInput").value;
+        const documentText =
+          document.getElementById("originalDocument").value ||
+          document.getElementById("documentInput").value;
+        const publicKey = document.getElementById("publicKey").value;
+
+        if (!signature) {
+          alert(
+            "⚠️ Tidak ada tanda tangan untuk diunduh!\nBuat tanda tangan digital terlebih dahulu."
+          );
+          return;
+        }
+
+        const content = `===== DIGITAL SIGNATURE =====
+
+TIMESTAMP: ${new Date().toISOString()}
+ALGORITHM: RSA-SHA256
+
+PUBLIC KEY:
+${publicKey || "Not available"}
+
+DIGITAL SIGNATURE:
+${signature}
+
+ORIGINAL DOCUMENT:
+${documentText || "Not available"}
+
+=================================
+Generated by: Web Kriptografi TI`;
+
+        const filename = `digital_signature_${Date.now()}.sig`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // 2. Download RSA Key Pair
+      function downloadKeys() {
+        const privateKey = document.getElementById("privateKey").value;
+        const publicKey = document.getElementById("publicKey").value;
+
+        if (!privateKey || !publicKey) {
+          alert(
+            "⚠️ Tidak ada kunci untuk diunduh!\nGenerate key pair terlebih dahulu."
+          );
+          return;
+        }
+
+        const content = `===== RSA KEY PAIR =====
+
+GENERATED: ${new Date().toISOString()}
+ALGORITHM: RSA-2048
+KEY SIZE: 2048 bit
+
+=== PRIVATE KEY (KEEP SECURE!) ===
+${privateKey}
+
+=== PUBLIC KEY (SHARE FREELY) ===
+${publicKey}
+
+=================================
+Generated by: Web Kriptografi TI
+WARNING: Keep your private key secure!`;
+
+        const filename = `rsa_keypair_${Date.now()}.key`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // 3. Download Verification Result
+      function downloadVerification() {
+        const resultDiv = document.getElementById("verificationResult");
+        if (!resultDiv || resultDiv.querySelector(".result-placeholder")) {
+          alert(
+            "⚠️ Tidak ada hasil verifikasi untuk diunduh!\nVerifikasi tanda tangan terlebih dahulu."
+          );
+          return;
+        }
+
+        const signature = document.getElementById("signatureInput").value;
+        const documentText = document.getElementById("originalDocument").value;
+        const publicKey = document.getElementById("publicKey").value;
+
+        const content = `===== VERIFICATION RESULT =====
+
+TIMESTAMP: ${new Date().toISOString()}
+VERIFIED BY: Web Kriptografi TI
+
+PUBLIC KEY USED:
+${publicKey || "Not available"}
+
+SIGNATURE VERIFIED:
+${signature || "Not available"}
+
+DOCUMENT VERIFIED:
+${documentText || "Not available"}
+
+VERIFICATION RESULT:
+${resultDiv.textContent}
+
+=================================`;
+
+        const filename = `verification_result_${Date.now()}.txt`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // =============================================
+      // FUNGSI DOWNLOAD UNTUK TOOLS
+      // =============================================
+
+      // 4. Download Hash Result
+      function downloadHash() {
+        const input = document.getElementById("hashInput").value;
+        const resultDiv = document.getElementById("hashResult");
+        const algorithm = document.getElementById("hashAlgorithm").value;
+
+        if (!input || !resultDiv.textContent.trim()) {
+          alert(
+            "⚠️ Tidak ada hash untuk diunduh!\nGenerate hash terlebih dahulu."
+          );
+          return;
+        }
+
+        const content = `===== HASH RESULT =====
+
+ALGORITHM: ${algorithm.toUpperCase()}
+TIMESTAMP: ${new Date().toISOString()}
+
+ORIGINAL TEXT:
+${input}
+
+HASH (${algorithm.toUpperCase()}):
+${resultDiv.textContent}
+
+=================================`;
+
+        const filename = `${algorithm}_hash_${Date.now()}.txt`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // 5. Download Base64 Result
+      function downloadBase64() {
+        const input = document.getElementById("base64Input").value;
+        const resultDiv = document.getElementById("base64Result");
+
+        if (!input || !resultDiv.textContent.trim()) {
+          alert(
+            "⚠️ Tidak ada hasil untuk diunduh!\nLakukan encode/decode terlebih dahulu."
+          );
+          return;
+        }
+
+        const content = `===== BASE64 RESULT =====
+
+TIMESTAMP: ${new Date().toISOString()}
+
+INPUT:
+${input}
+
+RESULT:
+${resultDiv.textContent}
+
+=================================`;
+
+        const filename = `base64_result_${Date.now()}.txt`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // 6. Download Random Key
+      function downloadRandomKey() {
+        const resultDiv = document.getElementById("keyResult");
+        const keyLength = document.getElementById("keyLength").value;
+        const keyType = document.getElementById("keyType").value;
+
+        if (!resultDiv.textContent.trim()) {
+          alert(
+            "⚠️ Tidak ada kunci untuk diunduh!\nGenerate random key terlebih dahulu."
+          );
+          return;
+        }
+
+        const content = `===== RANDOM KEY =====
+
+GENERATED: ${new Date().toISOString()}
+KEY TYPE: ${keyType}
+KEY LENGTH: ${keyLength} characters
+
+KEY:
+${resultDiv.textContent}
+
+=================================
+Generated by: Web Kriptografi TI`;
+
+        const filename = `random_key_${Date.now()}.txt`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // 7. Download Method Result (untuk modal)
+      function downloadMethodResult() {
+        const modalTitle =
+          document.getElementById("modalTitle")?.textContent || "Method Result";
+        const methodInput = document.getElementById("methodInputText");
+        const resultOutput = document.getElementById("methodResultOutput");
+
+        if (!methodInput || !resultOutput || !methodInput.value) {
+          alert(
+            "⚠️ Tidak ada hasil untuk diunduh!\nLakukan enkripsi/dekripsi terlebih dahulu."
+          );
+          return;
+        }
+
+        const action =
+          document.querySelector('input[name="methodAction"]:checked')?.value ||
+          "processed";
+
+        const content = `===== ${modalTitle.toUpperCase()} RESULT =====
+
+TIMESTAMP: ${new Date().toISOString()}
+ACTION: ${action.toUpperCase()}
+
+ORIGINAL TEXT:
+${methodInput.value}
+
+RESULT (${action.toUpperCase()}ED):
+${resultOutput.textContent}
+
+=================================`;
+
+        const filename = `${modalTitle
+          .toLowerCase()
+          .replace(/\s+/g, "_")}_${Date.now()}.txt`;
+        downloadTextAsFile(content, filename);
+      }
+
+      // =============================================
+      // INISIALISASI MODAL DENGAN TOMBOL DOWNLOAD
+      // =============================================
+
+      // Simpan fungsi asli
+      const originalOpenMethodModal = window.openMethodModal || function () {};
+
+      // Override dengan tambahan tombol download
+      window.openMethodModal = function (method) {
+        if (typeof originalOpenMethodModal === "function") {
+          originalOpenMethodModal(method);
+        }
+
+        // Tambah tombol download setelah modal terbuka
+        setTimeout(() => {
+          const methodButtons = document.querySelector(".method-buttons");
+          if (
+            methodButtons &&
+            !methodButtons.querySelector(".download-method-btn")
+          ) {
+            const downloadBtn = document.createElement("button");
+            downloadBtn.className = "btn btn-success download-method-btn";
+            downloadBtn.innerHTML =
+              '<i class="fas fa-download"></i> Download Result';
+            downloadBtn.onclick = downloadMethodResult;
+            methodButtons.appendChild(downloadBtn);
+          }
+        }, 100);
+      };
+
+      // =============================================
+      // INISIALISASI SAAT HALAMAN DIMUAT
+      // =============================================
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("✅ Download functions initialized successfully!");
+
+        // Sembunyikan loading screen
+        setTimeout(() => {
+          const loadingScreen = document.getElementById("loading-screen");
+          if (loadingScreen) {
+            loadingScreen.style.opacity = "0";
+            setTimeout(() => {
+              loadingScreen.style.display = "none";
+            }, 500);
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
