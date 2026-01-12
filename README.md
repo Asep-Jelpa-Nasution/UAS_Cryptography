@@ -73,7 +73,7 @@ git clone https://github.com/Asep-Jelpa-Nasution/UAS_Cryptography
 ### 2. Masuk ke folder project
 
 ```bash
-cd digital-signature-web-app
+cd UAS_Cryptography
 ```
 
 ### 3. Jalankan menggunakan browser
